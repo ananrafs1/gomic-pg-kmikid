@@ -53,8 +53,8 @@ func (m *komikid) GetRoot(title string, Page, Quantity int) ([]string, error) {
 	if Page > 1 {
 		startIndex = (Page - 1) * Quantity
 	}
-	if startIndex+(Page)*Quantity <= lastIndex {
-		lastIndex = (Page) * Quantity
+	if startIndex+Quantity <= lastIndex {
+		lastIndex = startIndex + Quantity
 	}
 	return scrapperLinks[startIndex : lastIndex+1], nil
 }
