@@ -66,7 +66,7 @@ func (m *komikid) ParseData(links string) ([]Resource, error) {
 		imgs := []string{}
 		chpter := extractChapterFromLinks(links)
 		el.ForEach("img", func(index int, ch *colly.HTMLElement) {
-			imgs = append(imgs, ch.Attr("data-src"))
+			imgs = append(imgs, strings.TrimSpace(ch.Attr("data-src")))
 		})
 
 		rets = append(rets, Resource{
